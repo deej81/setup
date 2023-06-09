@@ -15,6 +15,6 @@ mount /dev/nvme0n1p3 /mnt/boot
 swapon /dev/nvme0n1p2
 
 nixos-generate-config --root /mnt
-#wget https://raw.githubusercontent.com/deej81/setup/main/framework13/configuration.nix -P /mnt/etc/nixos
+wget https://raw.githubusercontent.com/deej81/setup/main/framework13/configuration.nix -P /mnt/etc/nixos
 
 nixos-install
