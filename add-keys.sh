@@ -1,4 +1,5 @@
-!#/bin/bash
+
+
 
 sudo mkdir -p ~/.ssh
 sudo touch ~/.ssh/authorized_keys
