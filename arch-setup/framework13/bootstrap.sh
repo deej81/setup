@@ -20,9 +20,9 @@ mkdir -p /mnt/boot
 mount /dev/nvme0n1p3 /mnt/boot
 swapon /dev/nvme0n1p2
 
-pacstrap -K /mnt base base-devel linux linux-firmware neovim git efibootmgr dhcpcd wget
+pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git grub efibootmgr networkmanager wget
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt
+arch-chroot /mnt ./init.sh
 
