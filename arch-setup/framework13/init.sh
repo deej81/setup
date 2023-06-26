@@ -26,7 +26,7 @@ systemctl enable NetworkManager
 grub-install /dev/nvme0n1 --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
-exit
+echo "INSTALLATION COMPLETE. EXIT CHROOT AND REBOOT."
 
 
 

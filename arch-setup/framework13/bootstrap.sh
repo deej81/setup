@@ -20,6 +20,9 @@ mkdir -p /mnt/boot
 mount /dev/nvme0n1p3 /mnt/boot
 swapon /dev/nvme0n1p2
 
+# select uk mirror
+curl -s "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' > /etc/pacman.d/mirrorlist
+
 pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git grub efibootmgr networkmanager wget
 
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -27,5 +30,3 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp init.sh /mnt
 arch-chroot /mnt ./init.sh
 
-umount -a
-reboot
