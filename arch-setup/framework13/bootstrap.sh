@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pacman -Sy --noconfirm pacman-contrib
+
 loadkeys uk
 
 timedatectl set-timezone Europe/London
