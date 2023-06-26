@@ -19,7 +19,7 @@ passwd
 useradd -m -G wheel -s /bin/bash deej
 echo "ENTER DEEJ PASSWORD"
 passwd deej
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 systemctl enable NetworkManager
 
