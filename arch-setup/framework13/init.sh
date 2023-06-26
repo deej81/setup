@@ -13,5 +13,20 @@ echo "KEYMAP=uk" >> /etc/vconsole.conf
 
 echo "framework13" >> /etc/hostname
 
+echo "ENTER ROOT PASSWORD"
 passwd
+
+useradd -m -G wheel -s /bin/bash deej
+echo "ENTER DEEJ PASSWORD"
+passwd deej
+sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+systemctl enable NetworkManager
+
+grub-install /dev/nvme0n1 --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+
 
