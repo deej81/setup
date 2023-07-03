@@ -9,4 +9,10 @@ install-requirements:
 	sudo pacman -S yq --noconfirm
 
 install-hyprland-dev:
-	python3 install_profile.py hyprland-dev 
+	python3 install_profile.py hyprland-dev
+
+update: gitpull install-hyprland-dev
+
+gitpull:
+	git pull
+
