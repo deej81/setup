@@ -20,8 +20,6 @@ parted /dev/nvme0n1 --script -- mklabel gpt \
 # parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
 # parted /dev/nvme0n1 -- set 3 esp on
 
-# generate mirror list for united kingdom
-curl -s "https://archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
 mkfs.ext4 -L arch /dev/nvme0n1p1
 mkswap -L swap /dev/nvme0n1p2
@@ -31,6 +29,9 @@ mount /dev/nvme0n1p1 /mnt
 mkdir -p /mnt/boot
 mount /dev/nvme0n1p3 /mnt/boot
 swapon /dev/nvme0n1p2
+
+# generate mirror list for united kingdom
+curl -s "https://archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
 pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git grub efibootmgr networkmanager wget
 
