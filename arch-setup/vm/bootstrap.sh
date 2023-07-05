@@ -16,7 +16,6 @@ parted /dev/vda --script -- mklabel gpt \
 mkfs.ext4 -L arch /dev/vda2
 mkswap -L swap /dev/vda3
 
-
 mount /dev/vda2 /mnt
 swapon /dev/vda3
 
