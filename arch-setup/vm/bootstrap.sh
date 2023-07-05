@@ -30,5 +30,5 @@ pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git gr
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp init.sh /mnt
-arch-chroot /mnt sh "./init.sh $USERNAME $HOSTNAME"
+arch-chroot /mnt sh ./init.sh $USERNAME $HOSTNAME
 
