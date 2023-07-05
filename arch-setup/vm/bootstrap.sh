@@ -1,5 +1,8 @@
 #!/bin/bash
 
+USERNAME=$1
+HOSTNAME=$2
+
 pacman -Sy --noconfirm pacman-contrib
 
 loadkeys uk
@@ -27,5 +30,5 @@ pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git gr
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp init.sh /mnt
-arch-chroot /mnt sh ./init.sh
+arch-chroot /mnt sh "./init.sh $USERNAME $HOSTNAME"
 

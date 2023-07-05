@@ -16,3 +16,9 @@ update: gitpull install-hyprland-dev
 gitpull:
 	git pull
 
+bootstrap-vm:
+	cd arch-setup/vm && sh bootstrap.sh $(USERNAME) $(HOSTNAME)
+
+USERNAME ?= $(shell bash -c 'read -p "Enter Username: " username; echo $$username')
+HOSTNAME ?= $(shell bash -c 'read -p "Enter Hostname: " hostname; echo $$hostname')
+

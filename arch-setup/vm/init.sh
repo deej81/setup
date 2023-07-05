@@ -1,5 +1,8 @@
 #!/bin/bash
 
+USERNAME=$1
+HOSTNAME=$2
+
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 
 hwclock --systohc
@@ -11,20 +14,26 @@ echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
 
 echo "KEYMAP=uk" >> /etc/vconsole.conf
 
-echo "vm-1" >> /etc/hostname
+echo $HOSTNAME >> /etc/hostname
 
 echo "ENTER ROOT PASSWORD"
 passwd
 
-useradd -m -G wheel -s /bin/zsh deej
-echo "ENTER DEEJ PASSWORD"
-passwd deej
+useradd -m -G wheel -s /bin/zsh $USERNAME
+echo "ENTER $USERNAME PASSWORD"
+passwd $USERNAME
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 systemctl enable NetworkManager
 
 grub-install --target=i386-pc --recheck /dev/vda
 grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo -u $USERNAME git clone https://aur.archlinux.org/yay.git /home/$USERNAME/yay
+cd /home/$USERNAME/yay
+sudo -u $USERNAME makepkg -si --noconfirm
+
+sudo -u $USERNAME git clone https://github.com/deej81/setup /home/$USERNAME/setup
 
 echo "INSTALLATION COMPLETE. EXIT CHROOT AND REBOOT."
 
