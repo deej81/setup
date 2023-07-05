@@ -26,9 +26,6 @@ def install_to_pacman(config):
         else:
             print(config["package"]["name"] + " is installed")
         
-
-        
-
 def make_config_links(config):
     directory = "./packages/" + config["name"] + "/config/."
     target = str(Path.home()) + "/.config/" + config["config_directory"]+"/"

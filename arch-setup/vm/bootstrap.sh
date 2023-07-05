@@ -22,7 +22,7 @@ swapon /dev/vda3
 # generate mirror list for united kingdom
 curl -s "https://archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
-pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git grub networkmanager wget
+pacstrap -K /mnt base base-devel linux linux-firmware sof-firmware neovim git grub networkmanager wget zsh
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
