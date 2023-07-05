@@ -16,7 +16,7 @@ echo "framework13" >> /etc/hostname
 echo "ENTER ROOT PASSWORD"
 passwd
 
-useradd -m -G wheel,docker -s /bin/bash deej
+useradd -m -G wheel -s /bin/bash deej
 echo "ENTER DEEJ PASSWORD"
 passwd deej
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers

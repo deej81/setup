@@ -16,14 +16,14 @@ echo "vm-1" >> /etc/hostname
 echo "ENTER ROOT PASSWORD"
 passwd
 
-useradd -m -G wheel,docker -s /bin/bash deej
+useradd -m -G wheel -s /bin/bash deej
 echo "ENTER DEEJ PASSWORD"
 passwd deej
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 systemctl enable NetworkManager
 
-grub-install /dev/vda
+grub-install --target=i386-pc --recheck /dev/vda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "INSTALLATION COMPLETE. EXIT CHROOT AND REBOOT."
