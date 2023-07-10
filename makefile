@@ -8,10 +8,10 @@ install-requirements:
 	# install yq
 	sudo pacman -S yq --noconfirm
 
-install-hyprland-dev:
-	python3 install_profile.py hyprland-dev
+update-dotfiles:
+	cd dotfiles && stow */ -v --target=/home/deej --adopt
 
-update: gitpull install-hyprland-dev
+update: gitpull update-dotfiles
 
 gitpull:
 	git pull

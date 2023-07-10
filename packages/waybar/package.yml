@@ -1,5 +1,0 @@
-name: waybar
-config_directory: waybar
-package:
-  name: waybar-hyprland
-  source: aur
