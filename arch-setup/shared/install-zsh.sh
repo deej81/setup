@@ -1,0 +1,1 @@
+yay -S --needed --noconfirm - < zsh-packages.txt
