@@ -19,6 +19,9 @@ gitpull:
 bootstrap-vm:
 	cd arch-setup/vm && sh bootstrap.sh $(USERNAME) $(HOSTNAME)
 
+bootstrap-framework13:
+	cd arch-setup/framework13 && sh bootstrap.sh $(USERNAME) $(HOSTNAME)
+
 USERNAME ?= $(shell bash -c 'read -p "Enter Username: " username; echo $$username')
 HOSTNAME ?= $(shell bash -c 'read -p "Enter Hostname: " hostname; echo $$hostname')
 
