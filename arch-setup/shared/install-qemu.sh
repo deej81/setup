@@ -5,4 +5,9 @@ sudo systemctl start libvirtd.service
 
 # reboot!
 
+# it can be very grumpy running the networking unless you reboot after an update
+
+# run this if network is not working
+# sudo virsh net-start default
+
 
